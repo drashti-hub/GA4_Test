@@ -1,15 +1,19 @@
 // Get all the section links
 const sectionLinks = document.querySelectorAll('nav ul li a');
-
+var sectionName;
+document.querySelectorAll('nav ul li ').forEach(function(liElement) {
+         sectionName = liElement.textContent;
+})
 // Function to create event schema
 function createEventSchema(sectionId) {
     const eventSchema = {
-        '@context': 'http://schema.org',
+        'event': 'click',
         '@type': 'Event',
-        'name': `Viewed ${sectionId}`,
+        'section_name': `Viewed ${sectionId}`,
+        'cta_text':sectionName,
         'location': window.location.href,
-        'action': {
-            '@type': 'ViewAction',
+        'parameters': {
+           '@type': 'ViewAction',
             'target': sectionId
         }
     };
