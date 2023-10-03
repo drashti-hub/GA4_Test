@@ -13,7 +13,7 @@ function createEventSchema(sectionId) {
             'target': sectionId
         }
     };
-    return eventSchema;
+    return JSON.stringify(eventSchema); // Convert object to JSON string
 }
 
 // Add click event listener to each section link
@@ -21,6 +21,8 @@ sectionLinks.forEach(link => {
     link.addEventListener('click', function(event) {
         const sectionId = link.getAttribute('href'); // Get the section ID from href attribute
         const eventSchema = createEventSchema(sectionId);
-        console.log(eventSchema); // Log the event schema (you can send it to your server or analytics service)
+
+        // Send event schema to Google Apps Script to log in Google Sheet
+        google.script.run.logEvent(eventSchema);
     });
 });
