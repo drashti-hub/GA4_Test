@@ -27,6 +27,6 @@ sectionLinks.forEach(link => {
         const eventSchema = createEventSchema(sectionId);
 
         // Send event schema to Google Apps Script to log in Google Sheet
-        google.script.run.logEvent(eventSchema);
+        console.log(eventSchema);
     });
 });
